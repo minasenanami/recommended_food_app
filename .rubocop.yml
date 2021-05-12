@@ -48,3 +48,6 @@ Rails/FilePath:
 Rails/Output:
   Exclude:
     - "db/seeds.rb"
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
