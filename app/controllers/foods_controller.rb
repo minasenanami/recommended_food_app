@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :set_food, only: %i[edit update destroy]
   def index
     @foods = Food.includes(:user).order(created_at: :desc)
   end
@@ -17,20 +18,25 @@ class FoodsController < ApplicationController
   end
 
   def edit
-    @food
   end
 
   def update
-    @food
+    @food.update!(food_params)
+    redirect_to food_path
   end
 
   def destroy
-    @food
+    @food.destroy!
+    redirect_to root_path
   end
 
   private
 
   def food_params
     params.require(:food).permit(:name, :comment)
+  end
+
+  def set_food
+    @food = current_user.foods.find(params[:id])
   end
 end
