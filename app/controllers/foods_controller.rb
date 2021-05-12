@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.order(created_at: :desc)
+    @foods = Food.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -9,6 +9,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = current_user.foods.create!(food_params)
+    redirect_to root_path
   end
 
   def show
