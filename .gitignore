@@ -78,3 +78,5 @@ yarn-debug.log*
 
 .DS_Store
 /vender/bundle
+
+/public/uploads/
