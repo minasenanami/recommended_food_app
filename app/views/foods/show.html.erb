@@ -6,7 +6,7 @@
   <p><%= image_tag @food.image.url %></p>
 <% end %>
 
-<p>
+<p id="food-<%= @food.id %>">
   <% if @food.liked_by?(current_user) %>
     <%= render "like", food: @food %>
   <% else %>
